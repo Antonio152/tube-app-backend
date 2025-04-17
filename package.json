@@ -5,8 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "tsc",
-    "dev": "netlify dev",
-    "prepare": "if exist ./bin/yt-dlp/yt-dlp_linux (copy .\\bin\\yt-dlp\\yt-dlp_linux .\\netlify\\functions\\bin\\yt-dlp\\yt-dlp_linux) else echo File not found"
+    "dev": "netlify dev"
   },
   "keywords": [],
   "author": "",
