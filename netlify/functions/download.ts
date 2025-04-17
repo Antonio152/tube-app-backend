@@ -28,6 +28,8 @@ const handler: Handler = async (event) => {
     // Ruta al binario de yt-dlp
     const ytDlpPath = path.join(__dirname, 'bin', 'yt-dlp', 'yt-dlp_linux'); // yt-dlp.exe en Windows
 
+    console.log(fs.existsSync(ytDlpPath) ? 'Archivo encontrado' : 'Archivo no encontrado');
+
     // Asegúrate que sea ejecutable
     fs.chmodSync(ytDlpPath, 0o755);
 

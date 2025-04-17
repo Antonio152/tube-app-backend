@@ -8,3 +8,15 @@
     Access-Control-Allow-Origin = "*"
     Access-Control-Allow-Headers = "Content-Type"
     Access-Control-Allow-Methods = "GET, POST, OPTIONS" 
+
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/:splat"
+  status = 200
+
+[build.processing]
+  functions = {
+    "before_build" = [
+      "cp ./path/to/yt-dlp_linux ./netlify/functions/bin/yt-dlp/yt-dlp_linux"
+    ]
+  }
