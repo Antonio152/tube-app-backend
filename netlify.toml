@@ -1,6 +1,7 @@
 [build]
   functions = "netlify/functions"
   publish = "build"
+  command = "npm run build"  # Ejecuta el script de construcción en package.json
 
 [[headers]]
   for = "/.netlify/functions/*"
@@ -17,5 +18,6 @@
 [build.processing]
   functions = [
     "cp ./bin/yt-dlp/yt-dlp_linux ./netlify/functions/bin/yt-dlp/yt-dlp_linux",
-    "ls -l ./netlify/functions/bin/yt-dlp"
+    "ls -l ./netlify/functions/bin/yt-dlp",
+    "chmod +x ./netlify/functions/bin/yt-dlp/yt-dlp_linux"
   ]
