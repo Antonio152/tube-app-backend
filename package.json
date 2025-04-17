@@ -4,8 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "tsc",
-    "dev": "netlify dev"
+    "build": "npm run prepare && tsc",
+    "dev": "netlify dev",
+    "prepare": "cp ./bin/yt-dlp/yt-dlp_linux ./netlify/functions/bin/yt-dlp/yt-dlp_linux"
   },
   "keywords": [],
   "author": "",
