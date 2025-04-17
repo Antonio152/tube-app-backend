@@ -15,8 +15,6 @@
   status = 200
 
 [build.processing]
-  functions = {
-    "before_build" = [
-      "cp ./path/to/yt-dlp_linux ./netlify/functions/bin/yt-dlp/yt-dlp_linux"
-    ]
-  }
+  functions = [
+    "cp ./path/to/yt-dlp_linux ./netlify/functions/bin/yt-dlp/yt-dlp_linux"
+  ]
