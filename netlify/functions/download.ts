@@ -10,8 +10,10 @@ const handler: Handler = async (event) => {
   console.log('📥 Petición recibida para descargar video');
 
   try {
-    const { url } = JSON.parse(event.body || '{}');
-    console.log(`🔗 URL a descargar: ${url}`);
+    const rawUrl = event.queryStringParameters?.url;
+    const url = rawUrl ? decodeURIComponent(rawUrl) : undefined;
+    console.log('🧩 URL recibida:', rawUrl);
+    console.log('📥 URL a descargar:', url);
 
     if (!url) {
       return {
