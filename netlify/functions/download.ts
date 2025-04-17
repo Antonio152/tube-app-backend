@@ -32,6 +32,8 @@ const handler: Handler = async (event) => {
       headers: {
         'Content-Type': 'video/mp4',
         'Content-Disposition': `attachment; filename="${filename}"`,
+        'Access-Control-Allow-Origin': '*', // 🔥 Permite cualquier origen
+        'Access-Control-Allow-Headers': 'Content-Type',
       },
       body: fileBuffer.toString('base64'),
       isBase64Encoded: true,
