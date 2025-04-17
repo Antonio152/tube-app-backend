@@ -26,7 +26,7 @@ const handler: Handler = async (event) => {
     const filepath = path.join('/tmp', filename); // Netlify permite escribir solo en /tmp
 
     // Ruta al binario de yt-dlp
-    const ytDlpPath = path.join(__dirname, 'bin', 'yt-dlp', 'yt-dlp_linux'); // yt-dlp.exe en Windows
+    const ytDlpPath = path.join(__dirname, 'bin', 'yt-dlp', 'yt-dlp.py'); // yt-dlp.exe en Windows
     console.log(fs.existsSync(ytDlpPath) ? 'Archivo encontrado' : 'Archivo no encontrado');
 
 
@@ -41,7 +41,8 @@ const handler: Handler = async (event) => {
     //fs.chmodSync(ytDlpPath, 0o755);
 
     // Ejecutar la descarga con el binario local
-    await execAsync(`${ytDlpPath} -o "${filepath}" -f best "${url}"`);
+    //await execAsync(`${ytDlpPath} -o "${filepath}" -f best "${url}"`);
+    await execAsync(`python3 ${ytDlpPath}.py ...`);
 
     const fileBuffer = fs.readFileSync(filepath);
 
