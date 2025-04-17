@@ -25,7 +25,14 @@ const handler: Handler = async (event) => {
     const filename = `video_${Date.now()}.mp4`;
     const filepath = path.join('/tmp', filename); // Netlify permite escribir solo en /tmp
 
-    await execAsync(`yt-dlp -o "${filepath}" -f best "${url}"`);
+    // Ruta al binario de yt-dlp
+    const ytDlpPath = path.join(__dirname, 'bin', 'yt-dlp', 'yt-dlp_linux'); // yt-dlp.exe en Windows
+
+    // Asegúrate que sea ejecutable
+    fs.chmodSync(ytDlpPath, 0o755);
+
+    // Ejecutar la descarga con el binario local
+    await execAsync(`${ytDlpPath} -o "${filepath}" -f best "${url}"`);
 
     const fileBuffer = fs.readFileSync(filepath);
 
