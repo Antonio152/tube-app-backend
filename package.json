@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "npm run prepare && tsc",
+    "build": "tsc",
     "dev": "netlify dev",
-    "prepare": "cp  ./netlify/functions/bin/yt-dlp/yt-dlp_linux ./netlify/functions/bin/yt-dlp/yt-dlp_linux"
+    "prepare": "if exist ./bin/yt-dlp/yt-dlp_linux (copy .\\bin\\yt-dlp\\yt-dlp_linux .\\netlify\\functions\\bin\\yt-dlp\\yt-dlp_linux) else echo File not found"
   },
   "keywords": [],
   "author": "",
