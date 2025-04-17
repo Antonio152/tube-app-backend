@@ -27,13 +27,18 @@ const handler: Handler = async (event) => {
 
     // Ruta al binario de yt-dlp
     const ytDlpPath = path.join(__dirname, 'bin', 'yt-dlp', 'yt-dlp_linux'); // yt-dlp.exe en Windows
-    console.log("BASE PATH:",__dirname)
-    console.log("BIN PATH:",path.join(__dirname, 'bin', 'yt-dlp'))
-    console.log("PATH:",ytDlpPath)
     console.log(fs.existsSync(ytDlpPath) ? 'Archivo encontrado' : 'Archivo no encontrado');
 
-    // Asegúrate que sea ejecutable
-    fs.chmodSync(ytDlpPath, 0o755);
+
+    // Verificar si el binario tiene permisos de ejecución (solo necesario en Linux)
+    try {
+      fs.accessSync(ytDlpPath, fs.constants.X_OK);
+      console.log("✅ Binario es ejecutable");
+    } catch (err) {
+      console.log("❌ Binario NO es ejecutable");
+    }
+
+    //fs.chmodSync(ytDlpPath, 0o755);
 
     // Ejecutar la descarga con el binario local
     await execAsync(`${ytDlpPath} -o "${filepath}" -f best "${url}"`);
