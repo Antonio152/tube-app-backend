@@ -16,5 +16,6 @@
 
 [build.processing]
   functions = [
-    "cp ./path/to/yt-dlp_linux ./netlify/functions/bin/yt-dlp/yt-dlp_linux"
+    "cp ./bin/yt-dlp/yt-dlp_linux ./netlify/functions/bin/yt-dlp/yt-dlp_linux",
+    "ls -l ./netlify/functions/bin/yt-dlp"
   ]
