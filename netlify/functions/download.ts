@@ -22,10 +22,15 @@ const handler: Handler = async (event) => {
 
     console.log('📥 Descargando a:', filepath);
 
-    await ytdlp(url, {
+    const ytDlpPath = path.join(__dirname, 'bin', 'yt-dlp');
+
+    const options: Record<string, string> = {
       output: filepath,
       format: 'best',
-    });
+      execPath: ytDlpPath,
+    };
+    
+    await ytdlp(url, options);
 
     const fileBuffer = fs.readFileSync(filepath);
 

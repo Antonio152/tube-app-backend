@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "npm run prepare && tsc",
     "dev": "netlify dev",
-    "prepare": "mkdir -p ./netlify/functions/bin/yt-dlp && cp ./bin/yt-dlp/yt-dlp.py ./netlify/functions/bin/yt-dlp/yt-dlp.py"
+    "prepare": "mkdir -p ./netlify/functions/bin && cp ./bin/yt-dlp ./netlify/functions/bin/yt-dlp && chmod +x ./netlify/functions/bin/yt-dlp",
+    "build": "npm run prepare && tsc"
   },
   "keywords": [],
   "author": "",
