@@ -7,7 +7,7 @@
     "dev": "netlify dev",
     "postinstall": "chmod +x netlify/functions/bin/yt-dlp",
     "prepare": "mkdir -p ./netlify/functions/bin && cp ./bin/yt-dlp/yt-dlp ./netlify/functions/bin/yt-dlp && chmod +x ./netlify/functions/bin/yt-dlp",
-    "build": "npm run prepare && tsc && postinstall"
+    "build": "npm run prepare && tsc && npm run postinstall"
   },
   "keywords": [],
   "author": "",
