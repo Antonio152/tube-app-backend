@@ -35,6 +35,8 @@ const handler: Handler = async (event) => {
       };
     }
 
+    console.log('Permisos yt-dlp:', fs.statSync(ytDlpPath).mode.toString(8));
+    
     await new Promise<void>((resolve, reject) => {
       const ytDlpProcess = spawn(ytDlpPath, [
         url,
