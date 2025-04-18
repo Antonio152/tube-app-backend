@@ -22,9 +22,13 @@ const handler: Handler = async (event) => {
 
     console.log('📥 Descargando a:', filepath);
 
-    const ytDlpPath = '/var/task/netlify/functions/bin/yt-dlp';
+    const ytDlpPath = path.join(__dirname, 'bin', 'yt-dlp'); // Esto funciona desde funciones Netlify
+
+    console.log('YT-DLP path:', ytDlpPath);
+    console.log('¿Existe yt-dlp?', fs.existsSync(ytDlpPath));
+
     if (!fs.existsSync(ytDlpPath)) {
-      console.error('❌ yt-dlp no encontrado en la ruta:', ytDlpPath);
+      console.log('❌ yt-dlp no encontrado en la ruta:', ytDlpPath);
       return {
         statusCode: 500,
         body: JSON.stringify({ error: 'Error interno del servidor.' }),
