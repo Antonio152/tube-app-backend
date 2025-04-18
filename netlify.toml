@@ -14,5 +14,5 @@
   to = "/.netlify/functions/:splat"
   status = 200
 
-[functions."download"]
-  included_files = ["netlify/functions/bin/yt-dlp/yt-dlp_linux"]
+[functions]
+  included_files = ["netlify/functions/bin/yt-dlp/yt-dlp"]
