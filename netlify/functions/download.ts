@@ -1,7 +1,7 @@
 import { Handler } from '@netlify/functions';
 import fs from 'fs';
 import path from 'path';
-import ytdlp from 'yt-dlp-exec';
+import { spawn } from 'child_process';
 
 const handler: Handler = async (event) => {
   console.log('📥 Petición recibida para descargar video');
@@ -35,13 +35,27 @@ const handler: Handler = async (event) => {
       };
     }
 
-    const options: Record<string, string> = {
-      output: filepath,
-      format: 'best',
-      execPath: ytDlpPath,
-    };
+    await new Promise<void>((resolve, reject) => {
+      const ytDlpProcess = spawn(ytDlpPath, [
+        url,
+        '--output',
+        filepath,
+        '--format',
+        'best',
+      ]);
     
-    await ytdlp(url, options);
+      ytDlpProcess.stdout.on('data', (data) => console.log(`📤 stdout: ${data}`));
+      ytDlpProcess.stderr.on('data', (data) => console.error(`⚠️ stderr: ${data}`));
+    
+      ytDlpProcess.on('close', (code) => {
+        if (code === 0) {
+          resolve();
+        } else {
+          reject(new Error(`yt-dlp exited with code ${code}`));
+        }
+      });
+    });
+    
 
     const fileBuffer = fs.readFileSync(filepath);
 
