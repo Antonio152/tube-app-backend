@@ -1,5 +1,5 @@
 import { Handler } from "@netlify/functions";
-import ytdlp from "yt-dlp-exec";
+import ytdlp, { YtFlags } from "yt-dlp-exec";
 import path from "path";
 
 export const handler: Handler = async (event) => {
@@ -13,14 +13,18 @@ export const handler: Handler = async (event) => {
     }
 
     const outputPath = `/tmp/video_${Date.now()}.mp4`;
+    const binaryPath = path.join(__dirname, "bin/yt-dlp/yt-dlp");
 
     console.log("📥 Descargando:", url);
     console.log("📥 Guardando en:", outputPath);
+    console.log("📦 Usando binario en:", binaryPath);
 
     await ytdlp(url, {
       output: outputPath,
       format: "best",
-    });
+      binary: binaryPath,
+    } as YtFlags); // Add 'as YtFlags' to specify the type
+
 
     return {
       statusCode: 200,
