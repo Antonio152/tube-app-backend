@@ -22,7 +22,7 @@ const handler: Handler = async (event) => {
 
     console.log('📥 Descargando a:', filepath);
 
-    const ytDlpPath = path.join(__dirname, 'bin', 'yt-dlp'); // Esto funciona desde funciones Netlify
+    const ytDlpPath = path.resolve(__dirname, 'bin', 'yt-dlp', 'yt-dlp');// Esto funciona desde funciones Netlify
 
     console.log('YT-DLP path:', ytDlpPath);
     console.log('¿Existe yt-dlp?', fs.existsSync(ytDlpPath));
