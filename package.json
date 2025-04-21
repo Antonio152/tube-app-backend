@@ -1,16 +1,10 @@
 {
   "name": "tube-app-backend",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
   "scripts": {
     "dev": "netlify dev",
-    "prepare": "chmod +x ./netlify/functions/bin/yt-dlp/yt-dlp",
-    "build": "npm run prepare && tsc"
+    "build": "tsc"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "dependencies": {
     "@netlify/functions": "^3.1.2",
     "yt-dlp-exec": "^1.0.2"
