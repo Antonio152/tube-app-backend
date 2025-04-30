@@ -15,4 +15,4 @@
   status = 200
 
 [functions]
-  included_files = ["netlify/functions/bin/yt-dlp/yt-dlp"]
+  included_files = ["netlify/functions/bin/yt-dlp/yt-dlp", "netlify/functions/bin/ffmpeg-7.1.1-essentials_build/bin/ffmpeg.exe"]
