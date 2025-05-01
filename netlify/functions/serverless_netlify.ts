@@ -19,7 +19,7 @@ const handler: Handler = async (event) => {
     };
   }
 
-  const outputDir = '/tmp';
+  const outputDir = 'tmp';
   const outputTemplate = path.join(outputDir, '%(title)s.%(ext)s');
   fs.mkdirSync(outputDir, { recursive: true });
 

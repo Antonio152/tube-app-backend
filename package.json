@@ -3,10 +3,12 @@
   "version": "1.0.0",
   "scripts": {
     "dev": "netlify dev",
+    "start": "node index.js",
     "build": "tsc"
   },
   "dependencies": {
     "@netlify/functions": "^3.1.2",
+    "ffmpeg-static": "^5.2.0",
     "yt-dlp-exec": "^1.0.2"
   },
   "devDependencies": {
